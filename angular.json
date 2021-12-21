@@ -3,5 +3,37 @@
   "version": 1,
   "newProjectRoot": "projects",
   "projects": {
-  }
+    "guce": {
+      "projectType": "library",
+      "root": "projects/guce",
+      "sourceRoot": "projects/guce/src",
+      "prefix": "lib",
+      "architect": {
+        "build": {
+          "builder": "@angular-devkit/build-angular:ng-packagr",
+          "options": {
+            "project": "projects/guce/ng-package.json"
+          },
+          "configurations": {
+            "production": {
+              "tsConfig": "projects/guce/tsconfig.lib.prod.json"
+            },
+            "development": {
+              "tsConfig": "projects/guce/tsconfig.lib.json"
+            }
+          },
+          "defaultConfiguration": "production"
+        },
+        "test": {
+          "builder": "@angular-devkit/build-angular:karma",
+          "options": {
+            "main": "projects/guce/src/test.ts",
+            "tsConfig": "projects/guce/tsconfig.spec.json",
+            "karmaConfig": "projects/guce/karma.conf.js"
+          }
+        }
+      }
+    }
+  },
+  "defaultProject": "guce"
 }
